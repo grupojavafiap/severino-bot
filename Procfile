@@ -1,1 +1,1 @@
-web: java -Dquarkus.http.port=$PORT $JAVA_OPTS -jar target/severino-bot-*.jar
+web: java \$JAVA_OPTS -jar target/*-run.jar
