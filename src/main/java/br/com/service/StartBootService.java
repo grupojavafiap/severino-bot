@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
+import javax.inject.Inject;
 
 import io.quarkus.runtime.ShutdownEvent;
 import io.quarkus.runtime.StartupEvent;
@@ -16,9 +17,12 @@ import com.pengrad.telegrambot.request.SendMessage;
 
 
 @ApplicationScoped()
-public class BotService {
+public class StartBootService {
 
-    private static final Logger LOGGER = Logger.getLogger("BotService");
+    @Inject
+    private ProcessMessageService processMessageService;
+
+    private static final Logger LOGGER = Logger.getLogger("StartBootService");
 
     TelegramBot bot;
 
@@ -65,17 +69,22 @@ public class BotService {
         return newBot;
     }
 
-
+    /**
+     * 
+     * 
+     * @param updates
+     */
     private void receiveMessage(List<Update> updates)
     {
         for(Update update: updates)
-        {
-            System.out.println("text " + update.message().text());
-            
-            var name = update.message().from().firstName();
+        {   
+            LOGGER.info("[receiveMessage] text -> " + update.message().text());
 
             long chatId = update.message().chat().id();
-            bot.execute(new SendMessage(chatId, "Hello! " + name));
+
+            var response = processMessageService.process(update.message());
+
+            bot.execute(new SendMessage(chatId, response));
         }
     }
 
