@@ -15,7 +15,6 @@ import com.pengrad.telegrambot.UpdatesListener;
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.request.SendMessage;
 
-
 @ApplicationScoped()
 public class StartBootService {
 
@@ -26,12 +25,10 @@ public class StartBootService {
 
     TelegramBot bot;
 
-    void onStart(@Observes StartupEvent ev) 
-    {
+    void onStart(@Observes StartupEvent ev) {
         var name = System.getProperty("BOT_NAME");
-        
-        if(name == null)
-        {
+
+        if (name == null) {
             name = System.getenv("BOT_NAME");
         }
         var botName = name;
@@ -39,13 +36,11 @@ public class StartBootService {
         init();
     }
 
-    void onStop(@Observes ShutdownEvent ev) {               
+    void onStop(@Observes ShutdownEvent ev) {
         LOGGER.info("The application is stopping...");
     }
-    
 
-    private void init()
-    {
+    private void init() {
         var token = getBotToken();
         bot = createBot(token);
     }
@@ -56,8 +51,7 @@ public class StartBootService {
      * @param token
      * @return
      */
-    private TelegramBot createBot(String token)
-    {
+    private TelegramBot createBot(String token) {
         TelegramBot newBot = new TelegramBot(token);
 
         newBot.setUpdatesListener(updates -> {
@@ -74,34 +68,26 @@ public class StartBootService {
      * 
      * @param updates
      */
-    private void receiveMessage(List<Update> updates)
-    {
-        for(Update update: updates)
-        {   
+    private void receiveMessage(List<Update> updates) {
+        for (Update update : updates) {
             LOGGER.info("[receiveMessage] text -> " + update.message().text());
 
             long chatId = update.message().chat().id();
 
-            var response = processMessageService.process(update.message());
+            var response = processMessageService.process(update);
 
             bot.execute(new SendMessage(chatId, response));
         }
     }
 
-
-    String getBotToken()
-    {
+    String getBotToken() {
         var token = System.getProperty("BOT_TOKEN");
 
-        if(token == null)
-        {
+        if (token == null) {
             token = System.getenv("BOT_TOKEN");
         }
 
         return token;
     }
 
-
-    
-    
 }
