@@ -1,31 +1,30 @@
 package br.com.service;
 
 import java.util.List;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
-
 import io.quarkus.runtime.ShutdownEvent;
 import io.quarkus.runtime.StartupEvent;
+import io.vertx.core.eventbus.EventBus;
 import org.jboss.logging.Logger;
-
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.UpdatesListener;
 import com.pengrad.telegrambot.model.Update;
-import com.pengrad.telegrambot.request.SendMessage;
 
-@ApplicationScoped()
+@ApplicationScoped
 public class StartBootService {
 
-    @Inject
-    private ProcessMessageService processMessageService;
 
+    @Inject
+    EventBus bus; 
+    
     private static final Logger LOGGER = Logger.getLogger("StartBootService");
 
     TelegramBot bot;
 
-    void onStart(@Observes StartupEvent ev) {
+    void onStart(@Observes StartupEvent ev) 
+    {
         var name = System.getProperty("BOT_NAME");
 
         if (name == null) {
@@ -40,27 +39,32 @@ public class StartBootService {
         LOGGER.info("The application is stopping...");
     }
 
-    private void init() {
+    private void init() 
+    {
         var token = getBotToken();
         bot = createBot(token);
     }
 
     /**
-     * Cria o Bot e seta o listener para escutar as alterações
+     * Retorna uma instancia do boot
      * 
      * @param token
      * @return
      */
-    private TelegramBot createBot(String token) {
-        TelegramBot newBot = new TelegramBot(token);
+    private TelegramBot createBot(String token) 
+    {
+        if(bot == null)
+        {
+            bot = new TelegramBot(token);
+            bot.setUpdatesListener(updates -> {
 
-        newBot.setUpdatesListener(updates -> {
+                receiveMessage(updates);
+    
+                return UpdatesListener.CONFIRMED_UPDATES_ALL;
+            });
+        }
 
-            receiveMessage(updates);
-            return UpdatesListener.CONFIRMED_UPDATES_ALL;
-        });
-
-        return newBot;
+        return bot;
     }
 
     /**
@@ -68,16 +72,19 @@ public class StartBootService {
      * 
      * @param updates
      */
-    private void receiveMessage(List<Update> updates) {
-        for (Update update : updates) {
+    private void receiveMessage(List<Update> updates) 
+    {
+        for (Update update : updates) 
+        {
             LOGGER.info("[receiveMessage] text -> " + update.message().text());
 
-            long chatId = update.message().chat().id();
+            var message = new MessagePublish();
+            message.setBot(bot);
+            message.setUpdate(update);
 
-            var response = processMessageService.process(update);
-
-            bot.execute(new SendMessage(chatId, response));
+            bus.publish("br.com.service.ProcessMessageService", message);
         }
+        
     }
 
     String getBotToken() {

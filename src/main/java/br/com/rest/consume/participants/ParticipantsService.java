@@ -1,9 +1,7 @@
 package br.com.rest.consume.participants;
 
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
-
 import br.com.rest.consume.participants.dto.Participant;
-
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
