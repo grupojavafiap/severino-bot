@@ -20,12 +20,6 @@ public class LoansFlow {
         long chatId = update.message().chat().id();
 
         System.out.println("Iniciando o fluxo de emprestimo....");
-       
-        var participants = participantsService.getParticipants();
-
-        System.out.println(" Participantes .... ");
-        System.out.println(participants.get(0).getCity());  
-        System.out.println(participants.get(0).getOrganisationId());    
 
         bot.execute(new SendMessage(chatId, "Participantes..."));
     }

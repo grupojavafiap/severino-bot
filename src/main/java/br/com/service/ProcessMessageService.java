@@ -13,11 +13,16 @@ public class ProcessMessageService {
     @Inject
     private LoansFlow loansFlow;
 
+    /**
+     * Opções default dos chats bot do Telegram.
+     */
     private static final String START_OPTION = "/start";
     private static final String HELP_OPTION = "/help";
+    private static final String SETTINGS_OPTION = "/settings";
+
+
     private static final String MENU_OPTION = "99";
     private static final String MENU_OPTION_LOAN = "1";
-    private static final String SETTINGS_OPTION = "/settings";
 
     private static final String GREENTING_MESSAGE = "Eaê, blz? Sou o Severino, as suas ordens. Para eu mostrar as opções só digitar 99";
     private static final String MESSAGE_NOT_UNDERSTAND = "Poxa, não entendi...Estou aprendendo!!";

@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import br.com.rest.consume.participants.ParticipantsService;
-import br.com.rest.consume.participants.dto.Participant;
+import io.quarkus.vertx.http.runtime.devmode.Json;
 
 @Path("/health")
 public class HealthResource {
@@ -23,11 +23,11 @@ public class HealthResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response health() 
-    {
-        List<Participant> participantes = participantsService.getParticipants();
+    public Response health() {
+        List<Json> participantes = participantsService
+                .getParticipants();
 
-        //return Response.ok("{'status': 'UP'}").build();
+        // return Response.ok("{'status': 'UP'}").build();
 
         return Response.ok().entity(participantes).build();
     }

@@ -1,191 +1,220 @@
+
 package br.com.rest.consume.participants.dto;
 
 import java.util.List;
+import javax.annotation.Generated;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 public class Participant {
-	private String OrganisationId;
-	private String Status;
-	private String OrganisationName;
-	private String CreatedOn;
-	private String LegalEntityName;
-	private String CountryOfRegistration;
-	private String CompanyRegister;
-	private String RegistrationNumber;
-	private String RegistrationId;
-	private String RegisteredName;
-	private String AddressLine1;
-	private String AddressLine2;
-	private String City;
-	private String Postcode;
-	private String Country;
-	private String ParentOrganisationReference;
-	private List<Contacts> contacts;
-	private List<AuthorisationServers> AuthorisationServers;
-	private List<OrgDomainClaims> OrgDomainClaims;
-	private List<OrgDomainRoleClaims> OrgDomainRoleClaims;
 
-	public Participant() {
+    private String Status;
 
-	}
+    private List<OrgDomainRoleClaim> OrgDomainRoleClaims = null;
 
-	public String getOrganisationId() {
-		return this.OrganisationId;
-	}
+    private List<AuthorisationServer> AuthorisationServers = null;
 
-	public String getStatus() {
-		return this.Status;
-	}
+    private List<OrgDomainClaim> OrgDomainClaims = null;
 
-	public String getOrganisationName() {
-		return this.OrganisationName;
-	}
+    private Object Size;
 
-	public String getCreatedOn() {
-		return this.CreatedOn;
-	}
+    private String RegistrationId;
 
-	public String getLegalEntityName() {
-		return this.LegalEntityName;
-	}
+    private String OrganisationId;
 
-	public String getCountryOfRegistration() {
-		return this.CountryOfRegistration;
-	}
+    private String City;
 
-	public String getCompanyRegister() {
-		return this.CompanyRegister;
-	}
+    private String Postcode;
 
-	public String getRegistrationNumber() {
-		return this.RegistrationNumber;
-	}
+    private String AddressLine2;
 
-	public String getRegistrationId() {
-		return this.RegistrationId;
-	}
+    private String RegisteredName;
 
-	public String getRegisteredName() {
-		return this.RegisteredName;
-	}
+    private String AddressLine1;
 
-	public String getAddressLine1() {
-		return this.AddressLine1;
-	}
+    private String LegalEntityName;
 
-	public String getAddressLine2() {
-		return this.AddressLine2;
-	}
+    private String OrganisationName;
 
-	public String getCity() {
-		return this.City;
-	}
+    private String Country;
 
-	public String getPostcode() {
-		return this.Postcode;
-	}
+    private String RegistrationNumber;
+    private String CreatedOn;
 
-	public String getCountry() {
-		return this.Country;
-	}
+    private Object Tag;
 
-	public String getParentOrganisationReference() {
-		return this.ParentOrganisationReference;
-	}
+    private String ParentOrganisationReference;
 
-	public List<Contacts> getContacts() {
-		return this.contacts;
-	}
+    private String CompanyRegister;
 
-	public List<AuthorisationServers> getAuthorisationServers() {
-		return this.AuthorisationServers;
-	}
+    private String CountryOfRegistration;
 
-	public List<OrgDomainClaims> getOrgDomainClaims() {
-		return this.OrgDomainClaims;
-	}
+    public String getStatus() {
+        return Status;
+    }
 
-	public List<OrgDomainRoleClaims> getOrgDomainRoleClaims() {
-		return this.OrgDomainRoleClaims;
-	}
+    public void setStatus(String status) {
+        this.Status = status;
+    }
 
-	public void setOrganisationId(String value) {
-		this.OrganisationId = value;
-	}
+    public List<OrgDomainRoleClaim> getOrgDomainRoleClaims() {
+        return OrgDomainRoleClaims;
+    }
 
-	public void setStatus(String value) {
-		this.Status = value;
-	}
+    public void setOrgDomainRoleClaims(List<OrgDomainRoleClaim> orgDomainRoleClaims) {
+        this.OrgDomainRoleClaims = orgDomainRoleClaims;
+    }
 
-	public void setOrganisationName(String value) {
-		this.OrganisationName = value;
-	}
+    public List<AuthorisationServer> getAuthorisationServers() {
+        return AuthorisationServers;
+    }
 
-	public void setCreatedOn(String value) {
-		this.CreatedOn = value;
-	}
+    public void setAuthorisationServers(List<AuthorisationServer> authorisationServers) {
+        this.AuthorisationServers = authorisationServers;
+    }
 
-	public void setLegalEntityName(String value) {
-		this.LegalEntityName = value;
-	}
+    public List<OrgDomainClaim> getOrgDomainClaims() {
+        return OrgDomainClaims;
+    }
 
-	public void setCountryOfRegistration(String value) {
-		this.CountryOfRegistration = value;
-	}
+    public void setOrgDomainClaims(List<OrgDomainClaim> orgDomainClaims) {
+        this.OrgDomainClaims = orgDomainClaims;
+    }
 
-	public void setCompanyRegister(String value) {
-		this.CompanyRegister = value;
-	}
+    public Object getSize() {
+        return Size;
+    }
 
-	public void setRegistrationNumber(String value) {
-		this.RegistrationNumber = value;
-	}
+    public void setSize(Object size) {
+        this.Size = size;
+    }
 
-	public void setRegistrationId(String value) {
-		this.RegistrationId = value;
-	}
+    public String getRegistrationId() {
+        return RegistrationId;
+    }
 
-	public void setRegisteredName(String value) {
-		this.RegisteredName = value;
-	}
+    public void setRegistrationId(String registrationId) {
+        this.RegistrationId = registrationId;
+    }
 
-	public void setAddressLine1(String value) {
-		this.AddressLine1 = value;
-	}
+    public String getOrganisationId() {
+        return OrganisationId;
+    }
 
-	public void setAddressLine2(String value) {
-		this.AddressLine2 = value;
-	}
+    public void setOrganisationId(String organisationId) {
+        this.OrganisationId = organisationId;
+    }
 
-	public void setCity(String value) {
-		this.City = value;
-	}
+    public String getCity() {
+        return City;
+    }
 
-	public void setPostcode(String value) {
-		this.Postcode = value;
-	}
+    public void setCity(String city) {
+        this.City = city;
+    }
 
-	public void setCountry(String value) {
-		this.Country = value;
-	}
+    public String getPostcode() {
+        return Postcode;
+    }
 
-	public void setParentOrganisationReference(String value) {
-		this.ParentOrganisationReference = value;
-	}
+    public void setPostcode(String postcode) {
+        this.Postcode = postcode;
+    }
 
-	public void setContacts(List<Contacts> value) {
-		this.contacts = value;
-	}
+    public String getAddressLine2() {
+        return AddressLine2;
+    }
 
-	public void setAuthorisationServers(List<AuthorisationServers> value) {
-		this.AuthorisationServers = value;
-	}
+    public void setAddressLine2(String addressLine2) {
+        this.AddressLine2 = addressLine2;
+    }
 
-	public void setOrgDomainClaims(List<OrgDomainClaims> value) {
-		this.OrgDomainClaims = value;
-	}
+    public String getRegisteredName() {
+        return RegisteredName;
+    }
 
-	public void setOrgDomainRoleClaims(List<OrgDomainRoleClaims> value) {
-		this.OrgDomainRoleClaims = value;
-	}
+    public void setRegisteredName(String registeredName) {
+        this.RegisteredName = registeredName;
+    }
+
+    public String getAddressLine1() {
+        return AddressLine1;
+    }
+
+    public void setAddressLine1(String addressLine1) {
+        this.AddressLine1 = addressLine1;
+    }
+
+    public String getLegalEntityName() {
+        return LegalEntityName;
+    }
+
+    public void setLegalEntityName(String legalEntityName) {
+        this.LegalEntityName = legalEntityName;
+    }
+
+    public String getOrganisationName() {
+        return OrganisationName;
+    }
+
+    public void setOrganisationName(String organisationName) {
+        this.OrganisationName = organisationName;
+    }
+
+    public String getCountry() {
+        return Country;
+    }
+
+    public void setCountry(String country) {
+        this.Country = country;
+    }
+
+    public String getRegistrationNumber() {
+        return RegistrationNumber;
+    }
+
+    public void setRegistrationNumber(String registrationNumber) {
+        this.RegistrationNumber = registrationNumber;
+    }
+
+    public String getCreatedOn() {
+        return CreatedOn;
+    }
+
+    public void setCreatedOn(String createdOn) {
+        this.CreatedOn = createdOn;
+    }
+
+    public Object getTag() {
+        return Tag;
+    }
+
+    public void setTag(Object tag) {
+        this.Tag = tag;
+    }
+
+    public String getParentOrganisationReference() {
+        return ParentOrganisationReference;
+    }
+
+    public void setParentOrganisationReference(String parentOrganisationReference) {
+        this.ParentOrganisationReference = parentOrganisationReference;
+    }
+
+    public String getCompanyRegister() {
+        return CompanyRegister;
+    }
+
+    public void setCompanyRegister(String companyRegister) {
+        this.CompanyRegister = companyRegister;
+    }
+
+    public String getCountryOfRegistration() {
+        return CountryOfRegistration;
+    }
+
+    public void setCountryOfRegistration(String countryOfRegistration) {
+        this.CountryOfRegistration = countryOfRegistration;
+    }
 
 }

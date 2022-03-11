@@ -1,10 +1,13 @@
 package br.com.rest.consume.participants;
 
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
-import br.com.rest.consume.participants.dto.Participant;
+
+import io.quarkus.vertx.http.runtime.devmode.Json;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @Path("/participants")
@@ -16,5 +19,6 @@ public interface ParticipantsService {
      * 
      */
     @GET
-    List<Participant> getParticipants();
+    @Produces(MediaType.APPLICATION_JSON)
+    List<Json> getParticipants();
 }
