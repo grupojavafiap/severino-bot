@@ -28,6 +28,9 @@ chmod +x run.sh
 
 - Execute em PING na aplicação `http://localhost:8080/ping`
 
+## DEPLOY
+O Deploy no ambiente do Heroku é realizado a cada push na branch master.
+
 
 ## Testar o BOT  
 O projeto esta deployado no Heroku, é possivel acessar pela URL `https://severinoappbot.herokuapp.com/ping`, para interagir com o Severino basta adiciona-lo no telegram `@severino_app_bot`
