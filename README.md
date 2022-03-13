@@ -27,3 +27,10 @@ chmod +x run.sh
 - A aplicação estará rodando em `http://localhost:8080`
 
 - Execute em PING na aplicação `http://localhost:8080/ping`
+
+
+## Testar o BOT  
+O projeto esta deployado no Heroku, é possivel acessar pela URL `https://severinoappbot.herokuapp.com/ping`, para interagir com o Severino basta adiciona-lo no telegram `@severino_app_bot`
+
+
+
